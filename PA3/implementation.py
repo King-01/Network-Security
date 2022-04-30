@@ -72,14 +72,15 @@ def gen_LFG(i, j, n, lfg):
 
 # Select p, q, seed and number of elements to generate
 p, q = selectpq()
+print(p, q)
 seed = 18
 n = 1000
 # Calculate Blum Blum Shub and print the list as the answer
 li_bl = BlumBlumShub(n, p, q, seed)
 freq_bl = count_freq(li_bl)
 print_list(li_bl)
-print("Runs test; p value for LFG : ", runstest_1samp(li_bl)[1])
-print("Chisquare test; p value for LFG : ", chisquare(li_bl))
+print("Runs test - p value for Blum Blum Shub : ", runstest_1samp(li_bl)[1])
+print("Chisquare test - p value for Blum Blum Shub : ", chisquare(freq_bl))
 # Lagged Fibonacci Generator
 # Calculate LFG list and print the list as the answer
 i, j, lfg = 3, 7, [5, 63, 72, 31, 421, 141, 54, 323, 26, 412, 14, 241]
@@ -87,4 +88,4 @@ li_lfg = gen_LFG(i, j, n, lfg)
 print_list(li_bl)
 freq_lfg = count_freq(li_lfg)
 print("Runs test; p value for LFG : ", runstest_1samp(li_lfg)[1])
-print("Chisquare test; p value for LFG : ", chisquare(li_lfg))
+print("Chisquare test; p value for LFG : ", chisquare(freq_lfg))
